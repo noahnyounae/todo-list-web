@@ -36,3 +36,7 @@
     transform: rotate(360deg);
   }
 }
+
+.reset-daily-button:hover {
+  background-color: #1976d2;
+}

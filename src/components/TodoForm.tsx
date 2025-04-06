@@ -6,12 +6,14 @@ import './TodoForm.css';
 export default function TodoForm({ onTodoAdded }: { onTodoAdded: () => void }) {
   const [title, setTitle] = useState('');
   const [done, setDone] = useState(false);
+  const [daily, setDaily] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    createTodo({ title, done }).then(() => {
+    createTodo({ title, done, daily }).then(() => {
       setTitle('');
       setDone(false);
+      setDaily(false);
       onTodoAdded();
     });
   };
@@ -31,6 +33,14 @@ export default function TodoForm({ onTodoAdded }: { onTodoAdded: () => void }) {
           onChange={e => setDone(e.target.checked)}
         />
         Fait
+      </label>
+      <label className="todo-checkbox-label">
+        <input
+          type="checkbox"
+          checked={daily}
+          onChange={e => setDaily(e.target.checked)}
+        />
+        Daily
       </label>
       <button className="add-button" type="submit">Ajouter</button>
     </form>
